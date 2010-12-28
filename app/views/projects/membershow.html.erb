@@ -1,0 +1,36 @@
+<style>
+#createmember{position:absolute;
+												top:100px;
+												left:900px;
+												}
+#members{position:absolute;
+								left:300px;
+								top:250px;
+}												
+#msgs{position:absolute;
+					top:100px;
+					left:250px;
+					width:500px;
+					color:blue;
+					}
+#invitemember{position:absolute;
+												top:150px;
+												left:900px;}					
+</style>
+<div id="createmember"><%=link_to "Total Available Members",memberindex_project_url%></div>
+<div id="invitemember"><%=link_to "Invite New Member",invitenewmember_project_url%></div>
+<div id="members">
+<%if @member.count!=0%>
+<%i=1%>
+<table><caption>Project Members</caption>
+<thead><tr><th>Serial No</th><th>Name</th><td>Role</th><th>E-Mail</th><th>Contact No</th><th colspan="2">Actions</th></tr></thead>
+<tbody>
+<%@member.each do |member|%>
+<tr><td><%=i%></td><td><%=member.name%></td><td><%=member.role%></td><td><%=member.email%></td><td><%=member.contactnumber%></td><td><%=link_to "Edit",memberedit_project_url(member.id)%></td><td><%=link_to "Delete",memberdelete_project_url(member.id)%></td><tr>
+<%i=i+1%>
+<%end%>
+</tbody>
+</table>
+<%else%>
+<div id="msgs">There is no members available</div>
+<%end%>

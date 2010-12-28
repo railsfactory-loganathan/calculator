@@ -1,0 +1,21 @@
+<style>
+#newmember{position:absolute;
+											top:250px;
+											left:450px;
+											}
+#newmember table{width:400px;
+																height:240px;
+																}	
+#newmember table tr td{text-align:center;}																
+</style>
+<div id="newmember">
+<table><caption>Creating New Member</caption>
+<%=form_for :member,:url=>membercreate_project_path do |f|%>
+<tr><td>Name</td><td><%=f.text_field :name%></td></tr>
+<tr><td>Role</td><td><%=f.text_field :role%></td></tr>
+<tr><td>E-Mail</td><td><%=f.text_field :email%></td></tr>
+<tr><td>Contact No</td><td><%=f.text_field :contactnumber%></td></tr>
+<tr><td></td><td><%=f.submit 'Submit'%></td></tr>
+<%end%>
+</table>
+</div>

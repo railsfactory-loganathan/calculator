@@ -1,0 +1,9 @@
+<table>
+<%=form_for @member,:url=>memberupdate_project_path(@member.id) do |f|%>
+<tr><td>Name</td><td><%=f.text_field :name%></td></tr>
+<tr><td>Role</td><td><%=f.text_field :role%></td></tr>
+<tr><td>E-Mail</td><td><%=f.text_field :email%></td></tr>
+<tr><td>Contact No</td><td><%=f.text_field :contactnumber%></td></tr>
+<tr><td></td><td><%=f.submit 'Submit'%></td></tr>
+<%end%>
+</table>

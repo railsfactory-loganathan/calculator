@@ -1,0 +1,25 @@
+<style>
+#showproject{
+										position:absolute;
+										top:200px;
+										left:400px;	
+										background-color:	#aaaaaa;	
+										}
+#showproject table{height:250px;
+															width:500px;
+															}
+#showproject table tr td{text-align:center;
+																		cell-spacing: 0px;}
+#indexlink{position:absolute;
+									top:110px;
+									left:950px;}																		
+</style>
+<div id="showproject">
+<table><caption>Project Details</caption>
+<tr><td>Project Id</td><td><%=text_field_tag 'projectid',@projectmodel.id,:disabled=>true%></td></tr>
+<tr><td>Project Name</td><td><%=text_field_tag 'projectname',@projectmodel.name,:disabled=>true%></td></tr>
+<tr><td>Project Deadline</td><td><%=text_field_tag 'projectdeadline',@projectmodel.deadline,:disabled=>true%></td></tr>
+<tr><td>Project Description</td><td><%=text_area_tag 'projectdescription',@projectmodel.description,:size=>'23X10',:disabled=>true%></td></tr>
+</table>
+</div>
+<div id="indexlink"><%=link_to "move to index page",projects_url%></div>

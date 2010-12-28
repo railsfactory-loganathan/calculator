@@ -1,0 +1,43 @@
+<style>
+#loginid {border:5px;
+								background-color:#abcdef;
+								align:center;
+								width:380px;
+								height:280px;						
+								position:absolute;
+								left:440px;
+								top:250px;
+								}
+#loginid table {height:250px;
+												width:400px;
+									   }		
+#signupid{position:absolute;
+								left:930px;
+								top:100px;
+								}				
+#error{position:absolute;
+						left:-500px;
+						top:30px;
+						color:red;
+						width:700px;
+						height:20px;
+						}								
+</style>								
+<div id="loginid">
+<table><tr> <td colspan="2" align="center"><font align="center"><h1>Log In</h1></font></td></tr>
+
+<%= form_tag session_path do -%>
+<tr><td align="center"><p><%= label_tag 'login' %></td><td align="center"><%= text_field_tag 'login', @login %></p></td></tr>
+<tr><td align="center"><p><%= label_tag 'password' %></td><td align="center"><%= password_field_tag 'password', nil %></p></td></tr>
+
+<!-- Uncomment this if you want this functionality
+<tr><td></td><td align="center"><p><%= label_tag 'remember_me', 'Remember me' %><%= check_box_tag 'remember_me', '1', @remember_me %></p></td></tr>
+-->
+<tr><td></td><td align="center"><p><%= submit_tag 'Log in' %></p></td><tr>
+<% end -%>
+</table>
+</div>
+<div id="signupid">
+<%=link_to "Click Here To SignUp",new_user_url%>
+<div>
+<div id="error"><%=flash[:notice]%></div>

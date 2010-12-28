@@ -1,0 +1,23 @@
+<style>
+#editproject{
+										position:absolute;
+										top:270px;
+										left:450px;
+										background-color:#aaaaaa;
+										
+										}
+#editproject table{height:260px;
+														width:450px;
+														}		
+#editproject table tr td{text-align:center;}														
+</style>
+<div id="editproject">
+<table><caption>Edit The Project Details</caption>
+<%=form_for @projectmodel,:url=>project_path,:method=>:put do |f|%>
+<tr><td>Name</td><td><%=f.text_field :name%></td></tr>
+<tr><td>DeadLine</td><td><%=f.text_field :deadline%></td></tr>
+<tr><td>Name</td><td><%=f.text_area :description,:size=>'34X10'%></td></tr>
+<tr><td></td><td><%=f.submit 'submit'%></td></tr>
+<%end%>
+</table>
+</div>

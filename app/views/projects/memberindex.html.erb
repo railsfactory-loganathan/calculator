@@ -1,0 +1,59 @@
+<style>
+#createmember{position:absolute;
+												top:100px;
+												left:900px;
+												}
+#moveto{position:absolute;
+												top:150px;
+												left:900px;
+												}												
+#members{position:absolute;
+								left:200px;
+								top:250px;
+}												
+#msgs{position:absolute;
+					top:100px;
+					left:250px;
+					width:500px;
+					color:blue;
+					}		
+#members table{width:900px;
+													height:100%;													
+													border:1px solid #908679;
+													background:#908765;
+}												
+#members table tbody tr td{border-top-width:1px;
+																			border-top-style:solid;
+																			border-top-color:#908679;
+																			text-align:center;
+																			border-right-width:1px;
+																			border-right-style:solid;
+																			border-right-color:#908679;
+}
+#members table thead tr th{
+																			text-align:center;
+																			border-right-width:1px;
+																			border-right-style:solid;
+																			border-right-color:#908679;
+}
+#members table thead{background:#fff679;}
+#members table tbody{background:#679fff;}
+</style>
+<div id="createmember"><%=link_to "Create New Member",membernew_project_url%></div>
+<div id="moveto"><%=link_to "Move To Project Member List",membershow_project_url%></div>
+
+<div id="members">
+<%if @member.count!=0%>
+<%i=1%>
+<table><caption>Total Available Members</caption>
+<thead><tr><th>Serial No</th><th>Name</th><th>Role</th><th>E-Mail</th><th>Contact No</th><th colspan="2">Actions</th></tr></thead>
+<tbody>
+<%@member.each do |member|%>
+<tr><td><%=i%></td><td><%=member.name%></td><td><%=member.role%></td><td><%=member.email%></td><td><%=member.contactnumber%></td><td><%=link_to "Edit",memberedit_project_url(member.id)%></td><td><%=link_to "Delete",memberdelete_project_path(member.id),:method=>'delete'%></td><tr>
+<%i=i+1%>
+<%end%>
+</tbody>
+</table>
+<%else%>
+<div id="msgs">There is no members available</div>
+<%end%>

@@ -1,0 +1,74 @@
+<style>
+#list{
+				position:absolute;
+				top:300px;
+				left:350px;
+				
+				}
+#list table{height:30px;
+								width:500px;
+								border-width:10px;
+								border-collapse:collapse;
+								border-spacing: 0px;								
+								}				
+#list table tbody tr{text-align:center;
+															border-width: 1px;
+															border-style:solid;
+															border-color:#123456;
+															background-color:#dddddd;	
+																	}	
+
+#list table tbody tr td{border-collapse:collapse;
+																	cell-spacing: 0px;
+																	border-right:1px solid #aaaaaa;
+																	}				
+	#list table thead tr{background-color:#aaaaaa;
+																border-width: 1px;
+															  border-style:solid;
+															  border-color:#123456;
+																border-right:1px solid #000000;
+																}																
+#message{
+								position:absolute;
+								top:250px;
+								left:320px;
+								}
+#addrecord{
+								  position:absolute;
+							  	top:-200px;
+								  left:520px;
+									width:400px;
+									}
+#addrecord{
+								  position:absolute;
+							  	top:-150px;
+								  left:520px;
+									width:400px;
+									}									
+#list table tbody tr{border-right:1px solid #000000;}							
+#list table thead tr th{
+																	border-right:1px solid #aaaaaa;
+																	}
+#flashnotice{width:300px;
+										position:absolute;
+										top:-200px;
+										left:130px;
+										color:blue;
+										}																	
+</style>
+
+<div id="list">
+<%if @projectmodel.length!=0%>
+					<table><caption color="#aaaaaa">Project List</caption>
+					<thead><tr><th>ProjectId</th><th>Author</th><th>Name</th><th colspan="4">Actions</th></tr></thead>
+					<tbody>
+					<%@projectmodel.each do |project|%>
+					<tr><td><%=project.id%></td><td><%=project.user_id%></td><td><%=project.name%></td><td><%=link_to "Edit",edit_project_url(project.id)%></td><td><%=link_to "Delete",project_url(project.id),:method=>'delete'%></td><td><%=link_to "View",project_url(project.id)%></td><td><%=link_to "Members",membershow_project_url(project.id)%></td></tr>
+					<%end%></div>
+<%else%>
+					<div id="message"><font color="red"><h3>There is no record available for this project</h3></font></div>
+<%end%>
+</div>
+<div id="addrecord"><%=link_to "click here to add new record",new_project_url%></div>
+
+<div id="flashnotice"><%=flash[:notice]%></div>
